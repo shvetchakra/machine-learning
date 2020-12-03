@@ -26,22 +26,52 @@ Convolution networks or convolution neural networks are a specialized kind of ne
 One major advantage of using CNNs over NNs is that you do not need to flatten the input images to 1D as they are capable of working with image data in 2D. This helps in retaining the “spatial” properties of images.
 
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+For benchmarking we can use Alexnet or VGG models to perform some benchmarking.
+https://www.imperial.ac.uk/intelligent-digital-systems/cnn-benchmark-suite/
+Our model can also we compared for categorization accuracy as per kaggle competition leaderboard
+https://www.kaggle.com/c/emotion-detection-from-facial-expressions/leaderboard
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
-
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+We can use following metrics to evaluate our model
+1) Classification Accuracy
+2) Confusion Matrix
+3) F1 Score
 
 ### Project Design
-Technically, deep learning CNN models to train and test, each input image will pass it through a series of convolution layers with filters (Kernals), Pooling, fully connected layers (FC) and apply Softmax function to classify an object with probabilistic values between 0 and 1. The below figure is a complete flow of CNN to process an input image and classifies the objects based on values.
+Technically, deep learning CNN models to train and test, each input image will pass it through a series of convolution layers with filters (Kernals), Pooling, fully connected layers (FC) and apply Softmax function to classify an object with probabilistic values between 0 and 1.
 
+The project can be mainly clasified into following steps:
+
+**1) Load and preprocess the image dataset:
+
+The dataset is split into three parts, training, validation, and testing. For the training, I will apply transformations such as random scaling, cropping, and flipping. This will help the network generalize leading to better performance. The input data is resized to 224x224 pixels as required by the pre-trained networks for benchmarking.
+
+The validation and testing sets are used to measure the model's performance on data it hasn't seen yet. For this I will not do any scaling or rotation transformations, we'll need to resize then crop the images to the appropriate size.
+
+**2) Building and training the classifier
+
+Now that the data is ready, it's time to build and train the classifier. As usual, we should use one of the pretrained models from torchvision.models to get the image features. Build and train a new feed-forward classifier using those features.
+
+2.1) Load a pre-trained network
+
+2.2) Define a new, untrained feed-forward network as a classifier, using ReLU activations and dropout
+
+2.3) Train the classifier layers using backpropagation using the pre-trained network to get the features
+
+2.4) Track the loss and accuracy on the validation set to determine the best hyperparameters
+
+**3) Evaluate the model on the test set and evaluation metrics
+
+We can use following metrics to evaluate our model
+1) Classification Accuracy
+
+2) Confusion Matrix
+
+3) F1 Score
 
 -----------
 
-##References:
+### References:
 [1] https://biomedical-engineering-online.biomedcentral.com/articles/10.1186/1475-925X-8-16
 [2] Ratliff M. S., Patterson E., Emotion recognition using facial expressions with active appearance
 models, Proceedings of the Third IASTED International Conference on Human Computer
