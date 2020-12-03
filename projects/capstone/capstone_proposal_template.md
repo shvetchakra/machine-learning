@@ -42,13 +42,13 @@ Technically, deep learning CNN models to train and test, each input image will p
 
 The project can be mainly clasified into following steps:
 
-**1) Load and preprocess the image dataset:
+## 1) Load and preprocess the image dataset:
 
 The dataset is split into three parts, training, validation, and testing. For the training, I will apply transformations such as random scaling, cropping, and flipping. This will help the network generalize leading to better performance. The input data is resized to 224x224 pixels as required by the pre-trained networks for benchmarking.
 
 The validation and testing sets are used to measure the model's performance on data it hasn't seen yet. For this I will not do any scaling or rotation transformations, we'll need to resize then crop the images to the appropriate size.
 
-**2) Building and training the classifier
+## 2) Building and training the classifier
 
 Now that the data is ready, it's time to build and train the classifier. As usual, we should use one of the pretrained models from torchvision.models to get the image features. Build and train a new feed-forward classifier using those features.
 
@@ -60,7 +60,7 @@ Now that the data is ready, it's time to build and train the classifier. As usua
 
 2.4) Track the loss and accuracy on the validation set to determine the best hyperparameters
 
-**3) Evaluate the model on the test set and evaluation metrics
+## 3) Evaluate the model on the test set and evaluation metrics
 
 We can use following metrics to evaluate our model
 1) Classification Accuracy
