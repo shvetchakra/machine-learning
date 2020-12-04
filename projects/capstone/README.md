@@ -44,9 +44,15 @@ The project can be mainly clasified into following steps:
 
 ## 1) Load and preprocess the image dataset:
 
-The dataset is split into three parts, training, validation, and testing. For the training, I will apply transformations such as random scaling, cropping, and flipping. This will help the network generalize leading to better performance. The input data is resized to 224x224 pixels as required by the pre-trained networks for benchmarking.
-
-The validation and testing sets are used to measure the model's performance on data it hasn't seen yet. For this I will not do any scaling or rotation transformations, we'll need to resize then crop the images to the appropriate size.
+The dataset will be analyzed for the image attributes and the list of emotions labeled to them. Conversion of labels
+to lowercase and merge few labels into one may also be explored if required. Then we will divide the dataset into
+three sets, train set, validation set , and test set.
+For the training the model, we will apply some general image transformations such as random scaling, cropping,
+and flipping.
+The input data is center cropped to or resized to 224x224 pixels as required by the pre-trained networks for
+benchmarking.
+Next no scaling or rotation transformations will be performed on validation set and test set but need to resize
+then crop the images to the appropriate size to measure the model's performance on data it hasn't seen yet.
 
 ## 2) Building and training the classifier
 
